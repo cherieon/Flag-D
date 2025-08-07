@@ -6,12 +6,16 @@ import Missions from './pages/Missions';
 import Navbar from './components/Navbar';
 
 
+import welcomebanner from './components/welcomebanner.jpg';
+
+
 import './App.css'
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
+      <welcomebanner/>
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/missions" element={<Missions />}/>
