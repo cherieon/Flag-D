@@ -10,15 +10,16 @@ import welcomebanner from './components/welcomebanner.jpg';
 
 
 import './App.css'
+import WelcomeVideo from './components/WelcomeVideo';
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <welcomebanner/>
+      <welcomebanner />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/missions" element={<Missions />}/>
+        <Route path="/missions" element={<Missions />}/>        
       </Routes>
     </BrowserRouter>
   )
