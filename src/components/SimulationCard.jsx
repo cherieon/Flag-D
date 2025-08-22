@@ -5,7 +5,11 @@ function SimulationCard({simulation}) {
     const navigate = useNavigate();
 
     function StartSim() {
-        navigate('/missions/${simulation.title.toLowerCase()}');
+        if (simulation.title === "Deepfakes") {
+            navigate('/missions/deepfake');
+        } else {
+            navigate('/');
+        }
     }
 
     return (

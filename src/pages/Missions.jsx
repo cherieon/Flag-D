@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 const Missions = () => {
     return(
         <>
+            <h1>Missions</h1>
             <SimulationCard simulation={{title: "Deepfakes", description:"Learn about deepfakes"}} />
             <Outlet />
         </>
