@@ -6,7 +6,7 @@ function SimulationCard({simulation}) {
 
     function StartSim() {
         if (simulation.title === "Deepfakes") {
-            navigate('/missions/deepfake');
+            navigate('/deepfake');
         } else {
             navigate('/');
         }

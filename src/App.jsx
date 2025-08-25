@@ -21,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/missions" element={<Missions />}/>  
           <Route path="deepfake" element={<Deepfake />}/> 
+
       </Routes>
     </BrowserRouter>
   )
