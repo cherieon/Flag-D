@@ -1,11 +1,10 @@
 
 function WelcomeVideo(){
     return (
-        <div className ="welcome-video">
+        <div className ="relative left-0 w-full h-screen m-0 flex justify-center items-center">
             <iframe
-                width="560"
-                height="315"  
-                src="https://www.youtube.com/watch?v=H6F9RKy7wmU"
+                className="w-full h-full"  
+                src="https://www.youtube.com/embed/H6F9RKy7wmU"
                 title="Welcome Video" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; icture-in-picture"
                 allowFullScreen

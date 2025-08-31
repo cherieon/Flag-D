@@ -5,8 +5,8 @@ function SimulationCard({simulation}) {
     const navigate = useNavigate();
 
     function StartSim() {
-        if (simulation.title === "Deepfakes") {
-            navigate('/deepfake');
+        if (simulation.title === "Phishing") {
+            navigate('/phishing');
         } else {
             navigate('/');
         }
@@ -15,7 +15,7 @@ function SimulationCard({simulation}) {
     return (
         <div className="simulation-card">
             <div className="simulation-poster">
-                <img src={simulation.image} alt={simulation.title} />
+                <img src={simulation.image} alt="this is supposed to be a picture" />
                 <div className="simuation-start">
                     <button className="start-button" onClick={StartSim}>
                         Start

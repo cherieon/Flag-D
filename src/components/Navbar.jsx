@@ -2,12 +2,14 @@ import { Link, useLocation } from 'react-router-dom'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { useState } from 'react';
 
+import logo from '../components/logo.png';
+
 const Navbar = () => {
 const location = useLocation();
 
 const navigation = [
   { name: 'Home', href: '/'},
-  { name: 'Missions', href: '/Missions'},
+  { name: 'Flag Lab', href: '/FlagLab'},
 ]
     function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -27,7 +29,7 @@ const navigation = [
             <div className="flex shrink-0 items-center">
               <img
                 alt="Cybersafety"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
+                src={logo}
                 className="h-8 w-auto"
               />
             </div>
@@ -39,7 +41,7 @@ const navigation = [
                     to={item.href}
                     aria-current={location.pathname === item.href ? 'page' : undefined}
                     className={classNames(
-                        location.pathname === item.href ? 'bg-pink-500 text-white' : 'text-black hover:bg-pink-500/25 hover:text-white',
+                        location.pathname === item.href ? 'bg-red-300 text-white' : 'text-black hover:bg-red-300/25 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium',
                     )}
                   >

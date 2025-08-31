@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
-import Missions from './pages/Missions';
-import Deepfake from './pages/Deepfake';
+import FlagLab from './pages/FlagLab';
+import Phishing from './pages/Phishing';
 
 import Navbar from './components/Navbar';
 
@@ -14,8 +14,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/missions" element={<Missions />}/>  
-          <Route path="deepfake" element={<Deepfake />}/> 
+        <Route path="/flaglab" element={<FlagLab />}/>  
+          <Route path="phishing" element={<Phishing />}/> 
 
       </Routes>
     </BrowserRouter>

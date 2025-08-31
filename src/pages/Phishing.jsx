@@ -1,6 +1,6 @@
 import React from "react";
 
-const Deepfake = () => {
+const Phishing = () => {
     return(
     <div>
         <h1>Deepfake Simulation</h1>
@@ -8,4 +8,4 @@ const Deepfake = () => {
     </div>
     );
 }
-export default Deepfake;
+export default Phishing;
