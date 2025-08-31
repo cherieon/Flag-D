@@ -1,5 +1,5 @@
 import React from "react";
-import Phishing from "./Phishing";
+import Phishing from "./Phishing/PhishingHook";
 import SimulationCard from "../components/SimulationCard";
 import { Outlet } from "react-router-dom";
 

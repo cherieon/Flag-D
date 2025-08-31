@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import FlagLab from './pages/FlagLab';
-import Phishing from './pages/Phishing';
+import PhishingHook from './pages/Phishing/PhishingHook';
+import PhishingLesson from './pages/Phishing/PhishingLesson';
+import PhishingActivity from './pages/Phishing/PhishingActivity';
 
 import Navbar from './components/Navbar';
 
@@ -15,8 +17,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/flaglab" element={<FlagLab />}/>  
-          <Route path="phishing" element={<Phishing />}/> 
-
+          <Route path="phishinghook" element={<PhishingHook />}/> 
+          <Route path="phishinglesson" element={<PhishingLesson />}/> 
+          <Route path="phishingactivity" element={<PhishingActivity/>}/>
       </Routes>
     </BrowserRouter>
   )
