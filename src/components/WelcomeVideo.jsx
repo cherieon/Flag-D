@@ -5,9 +5,8 @@ function WelcomeVideo(){
             <iframe
                 width="560"
                 height="315"  
-                src="https://youtu.be/p6pYE09F79g"
-                title="Welcome Video"  
-                frameBorder="0"
+                src="https://www.youtube.com/watch?v=H6F9RKy7wmU"
+                title="Welcome Video" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; icture-in-picture"
                 allowFullScreen
             ></iframe>
