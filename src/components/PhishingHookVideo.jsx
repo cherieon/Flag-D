@@ -3,21 +3,22 @@ import { useNavigate } from "react-router-dom";
 
 function PhishingHookVideo() {
     const playerRef = useRef(null);
+    const containerId = useRef(`phishing-player-${Math.random().toString(36).substr(2, 9)}`);
     const navigate = useNavigate();
 
     useEffect(() => {
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        document.body.appendChild(tag);
+        if (!window.YT) {
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            document.body.appendChild(tag);
+        }
 
-        window.onYouTubeIframeAPIReady = () => {
-            playerRef.current = new window.YT.Player('phishing-player', {
-                height: '390',
-                width: '640',
+        function onYouTubeReady() {
+            playerRef.current = new window.YT.Player(containerId.current, {
+                height: '100%',
+                width: '100%',
                 videoId: '_b9rpMPRHiE',
-                playerVars: {
-                    autoplay: 1,
-                },
+                playerVars: { autoplay: 1 },
                 events: {
                     'onStateChange': (event) => {
                         if (event.data === window.YT.PlayerState.ENDED) {
@@ -26,19 +27,28 @@ function PhishingHookVideo() {
                     }
                 }
             });
-        };
+        }
+
+        if (window.YT && window.YT.Player) {
+            onYouTubeReady();
+        } else {
+            window.onYouTubeIframeAPIReady = onYouTubeReady;
+        }
 
         return () => {
             if (playerRef.current && playerRef.current.destroy) {
                 playerRef.current.destroy();
             }
-            delete window.onYouTubeIframeAPIReady;
+            if (window.onYouTubeIframeAPIReady === onYouTubeReady) {
+                delete window.onYouTubeIframeAPIReady;
+            }
         };
     }, [navigate]);
 
     return (
-        <div id="phishing-player"
-        className="fixed top-0 left-0 w-screen h-screen z-50 bg-black flex items-center justify-center"
+        <div
+            id={containerId.current}
+            className="fixed inset-0 w-screen h-screen z-50 bg-black flex items-center justify-center"
         ></div>
     );
 }

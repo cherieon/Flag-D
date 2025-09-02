@@ -21,8 +21,9 @@ function SimulationCard({simulation}) {
             <div className="text-center">
                 <h3 className="text-2xl font-semibold">{simulation.title}</h3>
                 <p>{simulation.description}</p>
+                <p>----------------------------------------------------</p>
             </div>
-            <div className="start-button bg-indigo-200 text-black px-6 py-2 rounded-full shadow hover:bg-indigo-200/75 transition mb-4">
+            <div className="start-button bg-slate-200 text-black px-6 py-2 rounded-full shadow hover:bg-slate-200/50 transition mb-4">
                     <button className="start-button" onClick={StartSim}
                     >
                         Start

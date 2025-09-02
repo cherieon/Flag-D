@@ -7,6 +7,7 @@ const messagesData = [
     {
         id: 1,
         sender: "Bank Support",
+        email: "support@bank.com",
         text: "Your account has been locked. Click here to verify your information.",
         phishing: true,
         videoId: "IzilJYyDmh0",
@@ -14,14 +15,15 @@ const messagesData = [
     {
         id: 2,
         sender: "Friend",
+        email: "friend@example.com",
         text: "Hey! Check out these funny photos from last night!",
         phishing: false,
-        videoId: "O7wFnlTtVMc",
     },
     {
         id: 3,
         sender: "IT Admin",
-        text: "Urgent: Update your password immediately using this link.",
+        email: "itadmin@example.com",
+        text: "hi this is a test. im goingt o make this reallyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy long fro now",
         phishing: true,
         videoId: "GATSPoc2z48",
     },
@@ -33,6 +35,7 @@ const PhishingActivity = () => {
     const [selectedId, setSelectedId] = useState(null);
     const [userChoice, setUserChoice] = useState(null);
     const [showVideo, setShowVideo] = useState(false);
+    const [score, setScore] = useState(0);
 
     const selectedMsg = messages.find((m) => m.id === selectedId);
 
@@ -49,12 +52,15 @@ const PhishingActivity = () => {
 
         if (!selectedMsg) return;
 
+        // Check if answer is correct
+        const isCorrect =
+            (selectedMsg.phishing && choice === "redflag") ||
+            (!selectedMsg.phishing && choice === "safe");
+
+        if (isCorrect) setScore((prev) => prev + 1);
+
         if (!selectedMsg.phishing) {
-            // Safe message: clear immediately (short feedback delay)
             setTimeout(removeSelectedMessage, 1000);
-        } else {
-            // Phishing message: don't remove yet — user can click 👀 to view the video
-            // showVideo remains false until the user clicks the 👀 button
         }
     }
 
@@ -65,35 +71,35 @@ const PhishingActivity = () => {
     }
 
     function handleVideoEnd() {
-        // After watching the phishing video, remove the message
+        //if a phishing message (clear action)
         removeSelectedMessage();
     }
 
     return (
         <div className="flex flex-col md:flex-row min-h-screen">
             {/* Left column */}
-            <div className="md:w-1/4 w-full p-8 bg-pink-50">
+            <div className="md:w-1/4 w-full p-8 bg-red-100">
                 <h1 className="text-4xl font-bold mb-4">Ping or Pass</h1>
                 <p className="mb-4">Welcome to Ping or Pass!</p>
-                <p className="mb-4">Your job is to clear your dm's while avoiding phishing attempts.</p>
+                <p className="mb-4">Your job is to clear your messages while avoiding phishing attempts.</p>
                 <p className="mb-4">Click on the message and determine whether it's a red flag or a green flag.</p>
                 <p className="mb-4">
-                    Don't forget that social engineers try to exploit fear, curiosity, urgency, trust, and greed.
+                    Don't forget that social engineers try to exploit fear, curiosity, urgency, trust, and greed. Pay attention to the emotions you are feeling and the tell-tale signs of a phishing email.
                 </p>
             </div>
 
             {/* Right column */}
             <div className="md:w-3/4 w-full p-8 flex flex-col items-center justify-start bg-white">
-                <div className="w-full max-w-lg border rounded-lg shadow bg-gray-50 p-4 min-h-[500px] flex flex-col">
-                    <h2 className="text-2xl font-semibold mb-4 text-pink-600">Inbox</h2>
+                <div className="w-full max-w-lg border rounded-lg shadow bg-slate-50 p-4 min-h-[500px] flex flex-col">
+                    <h2 className="text-2xl font-semibold mb-4 text-grey-400">myMessage</h2>
 
-                    {/* Inbox list */}
+                    {/* inbox view */}
                     {!selectedId ? (
                         <div className="space-y-3">
                             {messages.map((msg) => (
                                 <div
                                     key={msg.id}
-                                    className="cursor-pointer rounded-lg p-3 border bg-white hover:bg-pink-50 border-gray-200 transition"
+                                    className="cursor-pointer rounded-lg p-3 border bg-white hover:bg-red-100 border-gray-200 transition"
                                     onClick={() => {
                                         setSelectedId(msg.id);
                                         setUserChoice(null);
@@ -101,7 +107,7 @@ const PhishingActivity = () => {
                                     }}
                                 >
                                     <div className="flex items-center gap-2 mb-1">
-                                        <span className="font-bold text-pink-700">{msg.sender}</span>
+                                        <span className="font-bold text-grey-400">{msg.sender}</span>
                                         <span className="text-xs text-gray-400">• Message</span>
                                     </div>
                                     <div className="text-gray-800">{msg.text}</div>
@@ -109,9 +115,13 @@ const PhishingActivity = () => {
                             ))}
                             {messages.length === 0 && (
                                 <div className="text-center mt-10">
-                                    <div className="text-green-600 font-bold">🎉 Inbox cleared! Great job!</div>
+                                    <div className="text-green-600 font-bold">
+                                        🎉 Inbox cleared! Great job!
+                                        <br />
+                                        Your score: {score} / {messagesData.length}
+                                    </div>
                                     <button
-                                        className="mt-4 px-5 py-2 bg-pink-500 text-white rounded-full shadow hover:bg-pink-600 transition"
+                                        className="mt-4 px-5 py-2 bg-slate-400 text-white rounded-full shadow hover:bg-red-300 transition"
                                         onClick={() => navigate('/phishingdebrief')}
                                     >
                                         Continue
@@ -120,7 +130,7 @@ const PhishingActivity = () => {
                             )}
                         </div>
                     ) : (
-                        // Selected message view (DM-style)
+                        //message view
                         <div className="flex flex-col items-end h-full">
                             <button
                                 className="mb-4 px-3 py-1 text-xs bg-gray-200 rounded-full self-start"
@@ -130,23 +140,33 @@ const PhishingActivity = () => {
                             </button>
 
                             <div className="w-full flex flex-col items-end">
-                                <div className="relative max-w-xs self-end mb-4">
-                                    <div className="bg-pink-200 rounded-2xl px-5 py-3 shadow text-gray-900">
-                                        <div className="text-xs text-pink-700 font-bold mb-1">{selectedMsg?.sender}</div>
-                                        <div className="text-base">{selectedMsg?.text}</div>
-                                    </div>
-                                    <div className="absolute right-0 bottom-0 w-4 h-4">
-                                        <svg viewBox="0 0 20 20" className="fill-pink-200">
-                                            <polygon points="0,0 20,0 20,20" />
-                                        </svg>
-                                    </div>
+    
+                            <div className="w-full flex flex-col items-end">
+                            {/* sender info */}
+                            <div className="mb-2 w-full flex justify-end">
+                                <div className="flex flex-col items-end">
+                                    <span className="font-bold text-gray-700">{selectedMsg?.sender}</span>
+                                    <span className="text-xs text-gray-500">{selectedMsg?.email}</span>
                                 </div>
+                            </div>
+                            {/* chat bubble */}
+                            <div className="relative max-w-xs self-end mb-4">
+                                <div className="bg-red-200 rounded-2xl px-6 py-5 shadow-lg text-gray-900 font-semibold text-lg">
+                                    <div className="text-base break-words">{selectedMsg?.text}</div>
+                                </div>
+                                <div className="absolute right-0 bottom-0 w-4 h-4">
+                                    <svg viewBox="0 0 20 20" className="fill-red-200">
+                                        <polygon points="0,0 20,0 20,20" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
 
                                 {/* Choice buttons */}
                                 {!userChoice ? (
                                     <div className="flex gap-4">
                                         <button
-                                            className="px-4 py-2 bg-red-500 text-white rounded-full shadow hover:bg-red-600 transition"
+                                            className="px-4 py-2 bg-red-500 text-white rounded-full shadow hover:bg-red-700 transition"
                                             onClick={() => handleChoice("redflag")}
                                         >
                                             🚩 Red Flag
@@ -155,48 +175,50 @@ const PhishingActivity = () => {
                                             className="px-4 py-2 bg-green-500 text-white rounded-full shadow hover:bg-green-600 transition"
                                             onClick={() => handleChoice("safe")}
                                         >
-                                            ✅ Safe
+                                            ✅ Green Flag
                                         </button>
                                     </div>
                                 ) : (
                                     <>
-                                        {/* Feedback */}
+                                        {/* ansqwers */}
                                         {selectedMsg?.phishing ? (
                                             userChoice === "redflag" ? (
                                                 <div className="mt-4 text-lg font-semibold text-green-700">
-                                                    Good job — that is correct!
+                                                    W, you didn’t fall for that!
+                                                    <br /> This is what WOULD’VE happened if you did…
                                                 </div>
                                             ) : (
                                                 <div className="mt-4 text-lg font-semibold text-red-600">
-                                                    Nope — that was a phishing attempt.
+                                                    L move… now you’re NPC status
+                                                    <br />This is what WILL happen…
                                                 </div>
                                             )
                                         ) : userChoice === "safe" ? (
                                             <div className="mt-4 text-lg font-semibold text-green-700">
-                                                Good job — that is correct! This message will be cleared.
+                                                Okayyy smart. Not everything’s a scam.
                                             </div>
                                         ) : (
                                             <div className="mt-4 text-lg font-semibold text-yellow-600">
-                                                Nope — this message was actually safe. It will be cleared.
+                                                It’s good to check twice, but that one was safe
                                             </div>
                                         )}
 
-                                        {/* For phishing messages: show 👀 button to play video */}
+                                        {/* show bts*/}
                                         {selectedMsg?.phishing && !showVideo && (
                                             <button
-                                                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-full shadow hover:bg-blue-600 transition flex items-center gap-2"
+                                                className="mt-4 px-4 py-2 bg-teal-500 text-white rounded-full shadow hover:bg-teal-600 transition flex items-center gap-2"
                                                 onClick={() => setShowVideo(true)}
                                             >
-                                                <span role="img" aria-label="see">👀</span> See what would have happened
+                                                <span role="img" aria-label="see">👀</span> POV: you are the Scammer
                                             </button>
                                         )}
 
-                                        {/* For safe messages: removed after short delay (no video) */}
+                                        {/* remove the message */}
                                         {!selectedMsg?.phishing && (
-                                            <div className="mt-4 text-sm text-gray-500">Message will be removed...</div>
+                                            <div className="mt-4 text-sm text-gray-500">Message will be filed...</div>
                                         )}
 
-                                        {/* Video overlay (only for phishing and after 👀 clicked) */}
+                                        {/* show video then delete the message */}
                                         {selectedMsg?.phishing && showVideo && (
                                             <PhishingBTSVideo videoId={selectedMsg.videoId} onEnd={handleVideoEnd} />
                                         )}
