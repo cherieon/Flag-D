@@ -1,24 +1,29 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import PhishingLessonVideo from "../../components/PhishingLessonVideo";
 
-const PhishingLesson = () => {
+function PhishingLesson() {
     const [showVideo, setShowVideo] = useState(false);
+    const navigate = useNavigate();
 
-    return(
-    <div>
-        <h1 className="text-4xl font-bold mb-4">Phishing Lesson</h1>
-        {!showVideo ? (
+    function handleVideoEnd() {
+        navigate("/phishingactivity");
+    }
+
+    return (
+        <div className="min-h-screen flex flex-col items-center pt-50 bg-white">
+            {!showVideo ? (
                 <button
-                    className="px-6 py-3 bg-pink-500 text-white rounded-full shadow hover:bg-pink-600 transition"
+                    className="w-96 h-28 text-3xl bg-indigo-200 text-white rounded-2xl shadow hover:bg-red-200 transition font-bold flex items-center justify-center mb-8"
                     onClick={() => setShowVideo(true)}
                 >
                     Are you ready?
                 </button>
             ) : (
-                <PhishingLessonVideo />
+                <PhishingLessonVideo onEnd={handleVideoEnd} />
             )}
-    </div>
+        </div>
     );
 }
+
 export default PhishingLesson;

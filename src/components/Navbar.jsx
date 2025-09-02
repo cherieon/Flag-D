@@ -41,7 +41,7 @@ const navigation = [
                     to={item.href}
                     aria-current={location.pathname === item.href ? 'page' : undefined}
                     className={classNames(
-                        location.pathname === item.href ? 'bg-red-300 text-white' : 'text-black hover:bg-red-300/25 hover:text-white',
+                        location.pathname === item.href ? 'bg-red-300 text-white' : 'text-black hover:bg-red-300/75 hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium',
                     )}
                   >

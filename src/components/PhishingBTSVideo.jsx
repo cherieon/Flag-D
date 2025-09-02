@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
-function PhishingLessonVideo({ videoId = "wl1mlnbE72U", onEnd }) {
+function PhishingBTSVideo({ videoId, onEnd }) {
     const playerRef = useRef(null);
-    const containerId = useRef(`phishing-lesson-player-${Math.random().toString(36).substr(2, 9)}`);
+    const containerId = useRef(`phishing-bts-player-${Math.random().toString(36).substr(2, 9)}`);
 
     useEffect(() => {
         // Only add the script if it doesn't exist
@@ -12,6 +12,7 @@ function PhishingLessonVideo({ videoId = "wl1mlnbE72U", onEnd }) {
             document.body.appendChild(tag);
         }
 
+        // Setup player when API is ready
         function onYouTubeReady() {
             playerRef.current = new window.YT.Player(containerId.current, {
                 height: '100%',
@@ -20,7 +21,7 @@ function PhishingLessonVideo({ videoId = "wl1mlnbE72U", onEnd }) {
                 playerVars: { autoplay: 1 },
                 events: {
                     'onStateChange': (event) => {
-                        if (event.data === window.YT.PlayerState.ENDED && onEnd) {
+                        if (event.data === window.YT.PlayerState.ENDED) {
                             onEnd();
                         }
                     }
@@ -38,6 +39,7 @@ function PhishingLessonVideo({ videoId = "wl1mlnbE72U", onEnd }) {
             if (playerRef.current && playerRef.current.destroy) {
                 playerRef.current.destroy();
             }
+            // Only delete the callback if it matches
             if (window.onYouTubeIframeAPIReady === onYouTubeReady) {
                 delete window.onYouTubeIframeAPIReady;
             }
@@ -51,4 +53,4 @@ function PhishingLessonVideo({ videoId = "wl1mlnbE72U", onEnd }) {
     );
 }
 
-export default PhishingLessonVideo;
+export default PhishingBTSVideo;

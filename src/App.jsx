@@ -5,10 +5,12 @@ import FlagLab from './pages/FlagLab';
 import PhishingHook from './pages/Phishing/PhishingHook';
 import PhishingLesson from './pages/Phishing/PhishingLesson';
 import PhishingActivity from './pages/Phishing/PhishingActivity';
+import PhishingDebrief from './pages/Phishing/PhishingDebrief';
 
 import Navbar from './components/Navbar';
 
 import './App.css'
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="phishinghook" element={<PhishingHook />}/> 
           <Route path="phishinglesson" element={<PhishingLesson />}/> 
           <Route path="phishingactivity" element={<PhishingActivity/>}/>
+          <Route path="phishingdebrief" element={<PhishingDebrief/>}/>
       </Routes>
     </BrowserRouter>
   )
