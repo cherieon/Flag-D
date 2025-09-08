@@ -6,7 +6,7 @@ import PhishingBTSVideo from "../../components/PhishingBTSVideo";
 const messagesData = [
     {
         id: 1,
-        sender: "Bank Support",
+        sender: "Roblox",
         email: "support@bank.com",
         text: "Your account has been locked. Click here to verify your information.",
         phishing: true,
@@ -81,7 +81,7 @@ const PhishingActivity = () => {
             <div className="md:w-1/4 w-full p-8 bg-red-100">
                 <h1 className="text-4xl font-bold mb-4">Ping or Pass</h1>
                 <p className="mb-4">Welcome to Ping or Pass!</p>
-                <p className="mb-4">Your job is to clear your messages while avoiding phishing attempts.</p>
+                <p className="mb-4">Your job is to read your messages and respond while avoiding phishing attacks.</p>
                 <p className="mb-4">Click on the message and determine whether it's a red flag or a green flag.</p>
                 <p className="mb-4">
                     Don't forget that social engineers try to exploit fear, curiosity, urgency, trust, and greed. Pay attention to the emotions you are feeling and the tell-tale signs of a phishing email.
