@@ -4,20 +4,20 @@ import { useNavigate } from "react-router-dom";
 import PhishingBTSVideo from "../../components/PhishingBTSVideo";
 
 const messagesData = [
-    {
+       {
         id: 1,
-        sender: "Roblox",
-        email: "support@bank.com",
-        text: "Your account has been locked. Click here to verify your information.",
-        phishing: true,
-        videoId: "IzilJYyDmh0",
-    },
-    {
-        id: 2,
         sender: "Friend",
         email: "friend@example.com",
         text: "Hey! Check out these funny photos from last night!",
         phishing: false,
+    },
+    {
+        id: 2,
+        sender: "TikTok Support",
+        email: "no-reply@TrickTok.com",
+        text: "TikTok Support: Hi [Name], we detected unusual activity on your account. Verify your profile now to avoid suspension in 10 minutes https://example.com/tiktok-verify-demo /n Tap the link to confirm your info immediately.",
+        phishing: true,
+        videoId: "IzilJYyDmh0",
     },
     {
         id: 3,

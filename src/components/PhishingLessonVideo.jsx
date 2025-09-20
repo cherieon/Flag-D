@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-function PhishingLessonVideo({ videoId = "wl1mlnbE72U", onEnd }) {
+function PhishingLessonVideo({ videoId = "jk9343LH0Po", onEnd }) {
     const playerRef = useRef(null);
     const containerId = useRef(`phishing-lesson-player-${Math.random().toString(36).substr(2, 9)}`);
 
