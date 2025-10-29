@@ -6,8 +6,8 @@ import PhishingBTSVideo from "../../components/PhishingBTSVideo";
 const messagesData = [
        {
         id: 1,
-        sender: "Friend",
-        email: "friend@example.com",
+        sender: "Amy ❤️",
+        email: "amy@icloud.com",
         text: "Hey! Check out these funny photos from last night!",
         phishing: false,
     },
@@ -21,9 +21,9 @@ const messagesData = [
     },
     {
         id: 3,
-        sender: "IT Admin",
-        email: "itadmin@example.com",
-        text: "hi this is a test. im goingt o make this reallyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy long fro now",
+        sender: "Free Robux",
+        email: "rewards@r0bl0x-supp0rt.co",
+        text: "Congrats — you've been selected to receive 1000 FREE Robux! Click HERE to claim your reward before the offer expires!",
         phishing: true,
         videoId: "GATSPoc2z48",
     },
