@@ -25,7 +25,7 @@ const messagesData = [
         email: "rewards@r0bl0x-supp0rt.co",
         text: "Congratz — you've been selected to receive 1000 FREE Robux! Click HERE to claim your reward before the offer expires!",
         phishing: true,
-        videoId: "GATSPoc2z48",
+        videoId: "ZvsXYOiNJKE",
     },
 ];
 
