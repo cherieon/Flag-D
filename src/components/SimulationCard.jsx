@@ -15,7 +15,6 @@ function SimulationCard({simulation}) {
     return (
         <div className="bg-red-200 rounded-xl shadow-lg p-6 max-w-sm mx-auto transition-transform hover:scale-105 hover:shadow-2xl">
             <div className="flex flex-col items-center">
-                <img src={simulation.image} alt="this is supposed to be a picture" />
                 
             </div>
             <div className="text-center">

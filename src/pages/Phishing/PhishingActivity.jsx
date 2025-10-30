@@ -15,7 +15,7 @@ const messagesData = [
         id: 2,
         sender: "TikTok Support",
         email: "no-reply@TrickTok.com",
-        text: "TikTok Support: Hi [Name], we detected unusual activity on your account. Verify your profile now to avoid suspension in 10 minutes https://example.com/tiktok-verify-demo Tap the link to confirm your info immediately.",
+        text: "TikTok Support: Hi, we detected unusual activity on your account. Verify your profile now to avoid suspension in 10 minutes https://example.com/tiktok-verify-demo Tap the link to confirm your info immediately.",
         phishing: true,
         videoId: "at-hPctMC1U",
     },
