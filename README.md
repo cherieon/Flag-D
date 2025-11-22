@@ -6,3 +6,4 @@ Flag’D 1.0 (the current and first version) starts with a welcome video that in
 
 The goal of Flag’D is simple: to make cybersecurity education engaging, accessible, and age-appropriate for Generation Alpha. By connecting cybersecurity to their everyday digital habits, Flag’D helps them build habits of caution and critical thinking online while making learning about safety fun and relatable. 
 
+**if App is not loading on vercel, please close the application and reload it**
